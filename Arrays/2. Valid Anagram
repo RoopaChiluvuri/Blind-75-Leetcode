@@ -36,5 +36,8 @@ class Solution:
                 return False
         return True
 
-# Time and Space Complexity is  o(s + t)
+# Time Complexity is O(n) nothing but O(s + t) 
+# Space Complexity is O(n) nothing but O(s + t) 
+
+ 
 
