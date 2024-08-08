@@ -4,11 +4,18 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         return Counter(s) == Counter(t)
 
+# Time Complexity is O(n)
+# Space Complexity is O(n)
+
+
 # Soution 2
 
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:   
         return sorted(s) == sorted(t)
+
+# Time Complexity is O(n log n)
+# Space Complexity is O(n)
 
 
 # Solution 3
