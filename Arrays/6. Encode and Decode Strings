@@ -1,0 +1,39 @@
+class Codec:
+    def encode(self, strs: List[str]) -> str:
+        """Encodes a list of strings to a single string.
+        """
+        res = []
+
+        for s in strs:
+            for c in s:
+                res.append(str(ord(c)))
+                res.append(";")
+            res.append(" ")
+
+        return "".join(res)
+        
+
+    def decode(self, s: str) -> List[str]:
+        """Decodes a single string to a list of strings.
+        """
+        res = []
+        string = s.split(" ")
+
+        for s in string:
+            temp = []
+            for c in s.split(";"):
+                if c:
+                    temp.append(chr(int(c)))
+            res.append("".join(temp))
+        res.pop()
+        return res
+
+
+# Your Codec object will be instantiated and called as such:
+# codec = Codec()
+# codec.decode(codec.encode(strs))
+
+
+# Time Complexity is O(C)
+# Space Complexity is O(C), where C is the total number of characters in the list of strings
+
