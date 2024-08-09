@@ -17,5 +17,9 @@ class Solution:
             if len(res) == k:
                 return res
 
-   
-    # Time Coplexity is O(n)
+  
+# Time Coplexity is O(n)
+# Space Complexity is O(n)
+
+ 
+
