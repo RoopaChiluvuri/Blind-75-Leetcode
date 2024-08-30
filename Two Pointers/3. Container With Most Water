@@ -16,3 +16,7 @@ class Solution:
                 right -= 1
         return max_area
 
+# Time Complexity is O(n)
+# Space Complexity is O(1)
+
+
