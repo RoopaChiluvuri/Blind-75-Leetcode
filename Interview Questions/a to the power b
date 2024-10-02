@@ -1,0 +1,18 @@
+def power(a: float, b: int) -> float:
+    result = 1
+    base = a
+    exp = b
+    
+    while exp > 0:
+        # If exp is odd, multiply the current result with the base
+        if exp % 2 == 1:
+            result *= base
+        # Square the base
+        base *= base
+        # Divide the exponent by 2
+        exp //= 2
+    
+    return result
+
+#Time Complexity is O(logb)
+#Space Complexity is O(1)
