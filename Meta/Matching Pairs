@@ -4,7 +4,6 @@ import math
 
 # Add any helper functions you may need here
 
-
 def matching_pairs(s, t):
   n = len(s)
   matching = 0
