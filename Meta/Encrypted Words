@@ -1,0 +1,13 @@
+def findEncryptedWord(s):
+  if len(s) <= 1:
+    return s
+  
+  mid = (len(s) - 1) // 2
+  
+  left_encrypted = findEncryptedWord(s[:mid])
+  right_encrypted = findEncryptedWord(s[mid + 1:])
+  
+  return s[mid] + left_encrypted + right_encrypted
+  
+# Time Complexity is O(n)
+# Space Complexity is O(log n)
