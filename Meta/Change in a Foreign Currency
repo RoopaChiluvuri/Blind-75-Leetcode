@@ -1,0 +1,27 @@
+def canGetExactChange(targetMoney, denominations):
+  memo = {}
+  
+  def helper(target):
+    if target == 0:
+      return True
+    
+    if target < 0:
+      return False
+    
+    if target in memo:
+      return memo[target]
+    
+    
+    for coin in denominations:
+      if helper(target - coin):
+        memo[target] = True
+        return True
+      
+    memo[target] = False
+    return False
+      
+        
+  return helper(targetMoney)
+  
+# Time Complexity is O(d * t) where d is Denominations, t is targetMoney
+# Sppace Complexity is O(t) where t is targetMoney
