@@ -1,0 +1,28 @@
+def visible_nodes(root):
+  if not root:
+    return 0
+  
+  queue = deque([root])
+  visible_count = 0
+  
+  
+  while queue:
+    level_size = len(queue)
+    visible_count += 1
+    
+    for _ in range(level_size):
+      node = queue.popleft()
+      
+      if node.left:
+        queue.append(node.left)
+        
+      if node.right:
+        queue.append(node.right)
+        
+        
+  return visible_count
+  
+
+
+# Time Complexity is O(N), where N is number of nodes in a tree.
+# Space Complexiity is O(W), where W is the maximum width of the tree.
