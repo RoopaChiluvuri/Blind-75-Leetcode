@@ -1,0 +1,22 @@
+def findMaxProduct(arr):
+  output = []
+  min_heap = []
+  
+  for i,num in enumerate(arr):
+    heapq.heappush(min_heap, num)
+    
+    if len(min_heap) > 3:
+      heapq.heappop(min_heap)
+      
+    if i < 2:
+      output.append(-1)
+    else:
+      product = 1
+      for val in min_heap:
+        product *= val
+      output.append(product)
+    
+  return output
+
+# Time Complexity is O(n)
+# Space Complexity is O(n)
