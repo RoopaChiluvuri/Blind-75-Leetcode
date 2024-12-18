@@ -1,0 +1,28 @@
+import heapq
+
+def kth_largest_element(arr, k):
+  if k < 0 or k >= len(arr):
+    raise ValueError( "k is out of bound")
+
+  min_heap = []
+
+  for num in arr:
+    heapq.heappush(min_heap, num)
+
+    if len(min_heap) > k + 1 :
+      heapq.heappop(min_heap)
+
+  return min_heap[0]
+
+
+
+# Time Complexity is O(nlogk), Where n is the number of elements in the array, and k is the size of the heap.
+# Space Complexity is O(k)
+
+
+
+
+
+
+
+
