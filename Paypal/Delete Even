@@ -1,1 +1,26 @@
+public static SinglyLinkedListNode deleteEven(SinglyLinkedListNode listHead) {
+  if (listHead == null) return null;
+
+  while (listHead != null && listHead.data % 2 == 0) {
+    lisHead = listHead.next;
+  }
+
+  if (listHead == null) return null;
+
+  SinglyLinkedListNode current = listHead;
+
+  while (current.next != null) {
+    if (current.next.data % 2 == 0){
+      current.next = current.next.next;
+    }
+    else{
+      current = current.next;
+    }
+  }
+  return listHead;
+}
+
+# Time Complexity is O(n)
+# Space Complexity is O(1)
+    
 
