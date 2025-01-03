@@ -1,0 +1,68 @@
+def min_length_substring(s, t):
+  target_count = Counter(t)
+  required_chars = len(target_count)
+  
+  
+  left = 0
+  right = 0
+  formed = 0
+  window_count = {}
+  min_length = float('inf')
+  min_window = (-1, -1)
+  
+  while right < len(s):
+    char = s[right]
+    window_count[char] = window_count.get(char, 0) + 1
+  
+    if char in target_count and window_count[char] == target_count[char]:
+      formed += 1
+      
+    while left <= right and formed == required_chars:
+      char = s[left]
+      
+      if right - left + 1 < min_length:
+        min_length = right - left + 1
+        min_window =(left, right)
+        
+      window_count[char] -= 1
+      if char in target_count and window_count[char] < target_count[char]:
+        formed -= 1
+        
+      left += 1
+      
+      
+    right += 1
+    
+  return min_length if min_length != float('inf') else -1
+
+
+
+
+# Time Complexity is O(m + n)
+    - n is the length of string 𝑠 (the main string).
+    - m is the length of string 𝑡 (the target string).
+# Space Complexity is O(m)
+    - m is the number of unique characters in 𝑡.
+
+
+
+
+Question:
+
+Minimum Length Substrings
+You are given two strings s and t. You can select any substring of string s and rearrange the characters of the selected substring.
+Determine the minimum length of the substring of s such that string t is a substring of the selected substring.
+Signature
+int minLengthSubstring(String s, String t)
+Input
+s and t are non-empty strings that contain less than 1,000,000 characters each
+Output
+Return the minimum length of the substring of s. If it is not possible, return -1
+Example
+s = "dcbefebce"
+t = "fd"
+output = 5
+Explanation:
+Substring "dcbef" can be rearranged to "cfdeb", "cefdb", and so on. String t is a substring of "cfdeb".
+Thus, the minimum length required is 5.
+
