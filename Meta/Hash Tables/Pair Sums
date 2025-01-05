@@ -1,0 +1,22 @@
+import math
+from collections import defaultdict
+
+def numberOfWays(arr, k):
+  freq_map = defaultdict(int)
+  count = 0
+  
+  for nums in arr:
+    complement = k  - nums
+    if complement in freq_map:
+      count += freq_map[complement]
+      
+    freq_map[nums] += 1
+    
+  return count
+
+
+# Time Complexity is O(n)
+# Space Complexity is O(n)
+
+
+
