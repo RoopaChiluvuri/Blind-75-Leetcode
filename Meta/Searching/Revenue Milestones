@@ -1,0 +1,24 @@
+import math
+from bisect import bisect_left
+
+def getMilestoneDays(revenues, milestones):
+  prefix_sum = []
+  current_sum = 0
+  for revenue in revenues:
+    current_sum += revenue
+    prefix_sum.append(current_sum)
+    
+  milestones_with_indices = sorted((milestone, i) for i, milestone in enumerate(milestones))
+  
+  result = [-1] * len(milestones)
+  
+  for milestone,original_index in milestones_with_indices:
+    day = bisect_left(prefix_sum, milestone)
+    
+    if day < len(prefix_sum):
+      result[original_index] = day + 1
+   
+  return result
+    
+  # Time Complexity is O(N + KlogK + KlogN)
+  # Space Complexity is O(N + K)
