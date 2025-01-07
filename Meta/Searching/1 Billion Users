@@ -1,0 +1,29 @@
+import math
+
+def getBillionUsersDay(growthRates):
+  target = 1_000_000_000
+  
+  def totalUsersAtDay(t):
+    total = 0
+    for g in growthRates:
+      total += math.exp(t * math.log(g))
+      
+      if total >= target:
+        return True
+    return False  
+ 
+  left, right = 0, 10_000
+  
+  
+  while left < right:
+    mid = (left + right) // 2
+    if totalUsersAtDay(mid):
+      right = mid
+    else:
+      left = mid + 1
+      
+  return left
+  
+  
+# Time Complexity is O(N . logT)
+# Space Complexity is O(1)
