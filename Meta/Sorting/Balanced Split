@@ -1,0 +1,17 @@
+def balancedSplitExists(arr):
+  arr.sort()
+  total_sum = sum(arr)
+  left = 0
+  
+  
+  for i in range(len(arr)):
+    left += arr[i]
+    right = total_sum - left
+    
+    if left == right and arr[i] < arr[i+1]:
+      return True
+    
+  return False
+
+# Time Complexity is O(nlogn)
+# Space Complexity is O(1)
