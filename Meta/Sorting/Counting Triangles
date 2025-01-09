@@ -1,10 +1,10 @@
 def countDistinctTriangles(arr):
   distinct_triangles = set()
-
+  
   for triangle in arr:
-    canonical_form  = tuple(sorted(triangle))
+    canonical_form = tuple(sorted(triangle))
     distinct_triangles.add(canonical_form)
-    
+        
   return len(distinct_triangles)
 
 
