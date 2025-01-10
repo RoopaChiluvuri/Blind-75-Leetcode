@@ -8,6 +8,6 @@ def findEncryptedWord(s):
   right_encrypted = findEncryptedWord(s[mid + 1:])
   
   return s[mid] + left_encrypted + right_encrypted
-  
-# Time Complexity is O(n)
-# Space Complexity is O(log n)
+
+# Time Complexity is O(n log n)
+# Space Complexity is O(n)
