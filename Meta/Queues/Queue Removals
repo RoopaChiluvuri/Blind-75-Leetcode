@@ -1,24 +1,21 @@
 def findPositions(arr, x):
-  queue = deque([(value, idx + 1) for idx, value in enumerate(arr)])
-  output=[]
+  queue = deque([(value, idx+1) for idx, value in enumerate(arr)])
+  output = []
   
   for _ in range(x):
     popped = []
     
-    for _ in range(min(x,len(queue))):
+    
+    for _ in range(min(x, len(queue))):
       popped.append(queue.popleft())
       
       
     max_value = max(popped, key=lambda p: (p[0], -p[1]))
-    output.append(max_value)
+    output.append(max_value[1])
     
-    for value,idx in popped:
-      if (value,idx) != max_value:
-        queue.append((max(0, value - 1), idx))
-        
-        
-  return output
-      
+    
+    for value, idx in popped:
+      if (value, idx) != max_value:
+        queue.append((max(0, value - 1) , idx))
 
-# Time Complexity is O(x^2)
-# Space Complexity is O(n)
+  return output
