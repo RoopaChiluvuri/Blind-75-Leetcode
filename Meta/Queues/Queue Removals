@@ -19,3 +19,6 @@ def findPositions(arr, x):
         queue.append((max(0, value - 1) , idx))
 
   return output
+
+# Time Complexity is O(x^2)
+# Space Complexity is O(n)
