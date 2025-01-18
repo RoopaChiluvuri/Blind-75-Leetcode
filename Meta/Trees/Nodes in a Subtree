@@ -1,0 +1,33 @@
+import math
+from collections import Counter
+
+class Node: 
+  def __init__(self, data): 
+    self.val = data 
+    self.children = []
+
+def count_of_nodes(root, queries, s):
+  subtree_freq = {}
+  
+  def dfs(node):
+    if not node:
+      return Counter()
+    
+    count = Counter(s[node.val - 1])
+    
+    for child in node.children:
+      count += dfs(child)
+    
+    subtree_freq[node.val] = count 
+    return count
+  
+  dfs(root)
+  
+  result = []
+  
+  for u,c in queries:
+    result.append(subtree_freq[u].get(c,0))
+  return result
+    
+# Time Complexity is O(N + Q)
+# Space Complexity is O(N + Q)
