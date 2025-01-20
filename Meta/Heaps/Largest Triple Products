@@ -15,7 +15,7 @@ def findMaxProduct(arr):
       for val in min_heap:
         product *= val
       output.append(product)
-    
+        
   return output
 
 # Time Complexity is O(n)
