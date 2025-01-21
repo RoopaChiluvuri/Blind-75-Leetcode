@@ -1,0 +1,20 @@
+def minOperations(arr):
+  target = tuple(sorted(arr))
+  start = tuple(arr)
+  queue = deque([(start,0)])
+  visited = set()
+  visited.add(start)
+  
+  while queue:
+    current, steps = queue.popleft()
+    
+    if current == target:
+      return steps
+    
+    for i in range(len(current)):
+      for j in range(i + 1, len(current)+1):
+        next_state = current[:i]+ current[i:j][::-1] + current[j:]
+        
+        if next_state not in visited:
+          visited.add(next_state)
+          queue.append((next_state, steps +1))
