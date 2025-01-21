@@ -1,0 +1,17 @@
+def maxCandies(arr, k):
+  max_heap = []
+  result = 0
+  
+  for num in arr:
+    heapq.heappush(max_heap, -num)
+    
+  for _ in range(k):
+    max_value = -heapq.heappop(max_heap)
+    result += max_value
+    heapq.heappush(max_heap, -(max_value//2))
+    
+  return result
+  
+
+# Time Complexity is O(nlogn + klogn)
+# Space Complexity is O(n)
