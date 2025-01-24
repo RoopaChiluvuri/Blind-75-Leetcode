@@ -1,0 +1,20 @@
+def getTotalTime(arr):
+  max_heap = [-num for num in arr]
+  heapq.heapify(max_heap)
+  output = 0
+  
+  while len(max_heap) > 1:
+    num1 = -heapq.heappop(max_heap)
+    num2 = -heapq.heappop(max_heap)
+    
+    new_num = num1 + num2
+
+    output += new_num
+    
+    heapq.heappush(max_heap, -new_num)
+    
+  return output
+  
+
+# Time Complexity is O(NlogN)
+# Space Complexity is O(N)
