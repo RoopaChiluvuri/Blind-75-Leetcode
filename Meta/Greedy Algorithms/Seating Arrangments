@@ -1,0 +1,25 @@
+def minOverallAwkwardness(arr):
+  arr.sort()
+  
+  n = len(arr)
+  seating = [0] * n
+  left, right = 0, n-1
+  
+  
+  for i in range(n-1,-1,-2):
+    seating[right] = arr[i]
+    right -= 1
+    
+  for j in range(n-2,-1,-2):
+    seating[left] = arr[j]
+    left += 1
+    
+  max_awkwardness = 0
+  for i in range(len(seating)):
+    max_awkwardness = max(max_awkwardness, abs(seating[i] - seating[(i + 1)% n]))
+    
+  return max_awkwardness
+  
+  
+# Time Complexity is O(n logn)
+# Space Complexity is O(n)
