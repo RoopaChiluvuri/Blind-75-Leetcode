@@ -6,8 +6,6 @@ src = 0
 Output:
 {{0:0}, {1:7}, {2:3}, {3:9}, {4:5}}
 
-
-
 class Solution:
     def shortestPath(self, n: int, edges: List[List[int]], src: int) -> Dict[int, int]:
         adj = {}
