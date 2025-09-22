@@ -1,0 +1,50 @@
+Problem
+You are given:
+n nodes labeled 0 … n-1
+a list of undirected edges
+
+Find how many connected components are in the graph.
+(A connected component is a group of nodes where every node is reachable from every other node in that group.)
+
+✅ Example
+n = 5
+edges = [[0,1],[1,2],[3,4]]
+
+Graph looks like:
+0 -- 1 -- 2     3 -- 4
+
+Answer: 2 connected components
+
+
+class main:
+    def components():
+        adj = {i:[] for i in range(n)}
+        
+        for u,v in edges:
+            adj[u].append(v)
+            adj[v].append(u)
+            
+        visited = set()
+        
+        def dfs(node):
+            stack = [node]
+            while stack:
+                cur = stack.pop()
+                if cur in visited:
+                    continue
+                visited.add(cur)
+                for nei in adj[cur]:
+                    stack.append(nei)
+        
+        components = 0    
+        for i in range(n):
+            if i not in visited:
+                components += 1
+                dfs(i)
+                
+        return components
+        
+        
+# Time Complexity is O(V+E)
+# Space Complexity is O(V+E)
+# where V is vertices/nodes and E is Edges 
