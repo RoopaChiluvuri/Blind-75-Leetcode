@@ -1,0 +1,26 @@
+You are given the standard mapping from English letters to digits on a phone keypad:
+
+map = {
+2 -> abc
+3 -> def
+4	-> ghi
+5	-> jkl
+6	 -> mno
+7	-> pqrs
+8	-> tuv
+9	-> wxyz
+}
+
+Write a program that outputs all the words from a given list of KNOWN_WORDS 
+that can be formed from a given n-digit phone number, according to the keypad mapping above.
+
+KNOWN_WORDS = ['careers', 'linkedin', 'linkedgo', 'hiring', 'interview']
+
+phone_number = 2273377
+# Output: ['careers']
+
+phone_number = 54653346
+# Output: ['linkedin', 'linkedgo']
+
+
+
