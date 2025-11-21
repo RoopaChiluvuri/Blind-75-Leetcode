@@ -1,0 +1,51 @@
+Design and implement a dependency resolution system for a package manager. Specifically, you need to create a function that takes a list of packages to install, along with their dependencies, and returns an ordered list describing the sequence in which these packages should be installed.
+
+packages = {
+    "A": ["B","C"],
+    "B": ["C"],
+    "C": []
+}
+
+"""Approach:
+-> Build a graph
+-> Use DFS 
+-> Maintaing node states
+-> If cycle - error
+"""
+
+def resolve_dependencies(packages):
+
+    graph = packages
+    visited = {}
+    order = []
+
+    def dfs(pkg):
+        if pkg not in graph:
+            graph[pkg] = []
+
+        if visited.get(pkg, 0) == 1:
+            raise Exception("Cycle detected in dependencies")
+
+        if visited.get(pkg, 0) == 2:
+            return
+
+        " marking as Visiting"
+        visited[pkg] = 1
+
+        for dep in graph[pkg]:
+            dfs(dep)
+
+        "marking as Visted"
+        visited[pkg] = 2
+
+        order.append(pkg)
+
+    for pkg in packages:
+        "not visited"
+        if visited.get(pkg, 0) == 0:
+            dfs(pkg)
+    # C, B, A
+    return order
+
+Time Complexity is O(V+ E)
+Space Complexity is O(V+ E)
