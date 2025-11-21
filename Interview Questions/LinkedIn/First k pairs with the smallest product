@@ -1,0 +1,25 @@
+Given two sorted lists of positive integers, find the first k pairs with the smallest product.
+
+def k_smallest_product_pairs(nums1, nums2, k):
+    result = []
+    if not nums1 or not nums2:
+        return result
+    
+    heap = []
+
+    for i in range(min(k, len(nums1))):
+        heapq.heappush(heap, (nums1[i] * nums2[0], i, 0))
+
+    
+    while heap and len(result) < k:
+        product, i ,j = heapq.heappop(heap)
+        result.append((nums1[i],nums2[j]))
+
+        if j + 1 < len(nums2):
+            next_product = nums1[i] * nums2[j+1]
+            heapq.heappush(heap, (next_product, i, j+1))
+
+    return result
+
+# Time Complexity is O(k log k)
+# Space Complexity is O(k)
